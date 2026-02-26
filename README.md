@@ -15,7 +15,7 @@ Dieses Repository zeigt anhand realistischer Agentur-Tickets, dass ich:
 | # | Ticket | Technologie | Status |
 |---|--------|------------|--------|
 | 01 | TypoScript Site Config | TypoScript | Done |
-| 02 | Fluid Templates | Fluid/HTML | Open |
+| 02 | Fluid Templates | Fluid/HTML | Done |
 | 03 | Custom Content Element | PHP/TypoScript | Open |
 | 04 | SEO-Optimierung | TypoScript/HTML | Open |
 | 05 | CSS/Responsive Design | CSS/HTML | Open |
