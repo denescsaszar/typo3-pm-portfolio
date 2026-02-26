@@ -1,0 +1,26 @@
+# ==============================================
+# Plugin-Registrierung: DRK Events
+# ==============================================
+
+plugin.tx_drkevents {
+    view {
+        templateRootPaths.10 = EXT:drk_events/Resources/Private/Templates/
+        partialRootPaths.10 = EXT:drk_events/Resources/Private/Partials/
+        layoutRootPaths.10 = EXT:drk_events/Resources/Private/Layouts/
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_drkevents.persistence.storagePid}
+    }
+
+    settings {
+        # Maximale Anzahl Events in der Listenansicht
+        listLimit = 20
+
+        # Detail-Seite (PID)
+        detailPid = {$plugin.tx_drkevents.settings.detailPid}
+
+        # Datumsformat
+        dateFormat = d.m.Y H:i
+    }
+}

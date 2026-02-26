@@ -1,0 +1,57 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <div class="drk-events">
+        <h2>Veranstaltungen</h2>
+
+        <!-- Kategorie-Filter -->
+        <nav class="event-filter" aria-label="Veranstaltungen filtern">
+            <ul class="filter-list">
+                <li>
+                    <f:link.action action="list"
+                                   class="{f:if(condition: '{currentCategory} == \'\'', then: 'filter-link filter-link--active', else: 'filter-link')}">
+                        Alle
+                    </f:link.action>
+                </li>
+                <f:for each="{categories}" as="cat">
+                    <li>
+                        <f:link.action action="list"
+                                       arguments="{category: cat}"
+                                       class="{f:if(condition: '{currentCategory} == \'{cat}\'', then: 'filter-link filter-link--active', else: 'filter-link')}">
+                            <f:switch expression="{cat}">
+                                <f:case value="blutspende">Blutspende</f:case>
+                                <f:case value="erste-hilfe">Erste-Hilfe-Kurse</f:case>
+                                <f:case value="ehrenamt">Ehrenamt</f:case>
+                            </f:switch>
+                        </f:link.action>
+                    </li>
+                </f:for>
+            </ul>
+        </nav>
+
+        <!-- Event-Liste -->
+        <f:if condition="{events}">
+            <f:then>
+                <ul class="event-list" role="list">
+                    <f:for each="{events}" as="event">
+                        <li class="event-list__item">
+                            <f:render partial="Event/Card" arguments="{event: event}" />
+                        </li>
+                    </f:for>
+                </ul>
+            </f:then>
+            <f:else>
+                <p class="event-list__empty">
+                    Aktuell sind keine Veranstaltungen in dieser Kategorie geplant.
+                </p>
+            </f:else>
+        </f:if>
+    </div>
+
+</f:section>
+
+</html>
