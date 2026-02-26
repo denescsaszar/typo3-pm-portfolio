@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<!-- Default Layout: Grundgeruest fuer alle Seitentypen -->
+<div class="page-wrapper">
+
+    <!-- Skip-Navigation fuer Barrierefreiheit -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <!-- Header mit Navigation -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <f:render partial="Navigation/Main"
+                      arguments="{mainNavigation: mainNavigation}" />
+        </div>
+    </header>
+
+    <!-- Hauptinhalt — wird vom jeweiligen Template gefuellt -->
+    <main id="main-content" role="main">
+        <f:render section="content" />
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <f:render partial="Footer/Default"
+                      arguments="{footerNavigation: footerNavigation}" />
+
+            <!-- Barrierefreiheitserklaerung (Pflicht fuer BBB) -->
+            <div class="footer-legal">
+                <f:link.page pageUid="89">Impressum</f:link.page>
+                <f:link.page pageUid="90">Datenschutz</f:link.page>
+                <f:link.page pageUid="91">Barrierefreiheit</f:link.page>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+</html>

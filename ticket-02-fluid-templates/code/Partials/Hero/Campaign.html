@@ -1,0 +1,38 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<!-- Hero-Partial: Kampagnen-Header mit Hintergrundbild -->
+<section class="hero hero--campaign" aria-label="Kampagne: {heroTitle}">
+
+    <!-- Hintergrundbild mit Overlay -->
+    <div class="hero__background">
+        <f:image image="{heroImage}"
+                 alt=""
+                 width="1920"
+                 height="800"
+                 class="hero__image"
+                 loading="eager" />
+        <div class="hero__overlay" aria-hidden="true"></div>
+    </div>
+
+    <!-- Inhalt -->
+    <div class="hero__content container">
+        <h1 class="hero__title">{heroTitle}</h1>
+
+        <f:if condition="{heroSubtitle}">
+            <p class="hero__subtitle">{heroSubtitle}</p>
+        </f:if>
+
+        <f:if condition="{heroCtaText}">
+            <a href="{heroCtaLink}"
+               class="hero__cta btn btn--primary btn--large"
+               role="button">
+                {heroCtaText}
+                <span class="btn__icon" aria-hidden="true">&#8594;</span>
+            </a>
+        </f:if>
+    </div>
+
+</section>
+
+</html>
