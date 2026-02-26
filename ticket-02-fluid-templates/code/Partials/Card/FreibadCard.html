@@ -1,0 +1,41 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<!-- Freibad-Kachel: Bild, Name, Oeffnungszeiten, Link -->
+<article class="card card--freibad">
+
+    <!-- Bild -->
+    <div class="card__image-wrapper">
+        <f:image image="{image}"
+                 alt="Freibad {name}"
+                 width="400"
+                 height="300"
+                 class="card__image"
+                 loading="lazy" />
+    </div>
+
+    <!-- Inhalt -->
+    <div class="card__body">
+        <h3 class="card__title">{name}</h3>
+
+        <address class="card__address">
+            <span class="card__icon" aria-hidden="true">&#128205;</span>
+            {address}
+        </address>
+
+        <p class="card__hours">
+            <span class="card__icon" aria-hidden="true">&#128339;</span>
+            <span class="sr-only">Oeffnungszeiten: </span>
+            {openingHours}
+        </p>
+
+        <f:link.page pageUid="{detailLink}"
+                     class="card__link btn btn--secondary">
+            Details und Eintrittspreise
+            <span class="sr-only"> fuer {name}</span>
+        </f:link.page>
+    </div>
+
+</article>
+
+</html>

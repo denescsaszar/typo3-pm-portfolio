@@ -1,0 +1,70 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <!-- Hero-Bereich: Kampagnenbild mit Claim -->
+    <f:render partial="Hero/Campaign" arguments="{
+        heroImage: heroImage,
+        heroTitle: 'Berlin schwimmt!',
+        heroSubtitle: 'Entdecke die schoensten Freibaeder der Stadt',
+        heroCtaText: 'Freibad in deiner Naehe finden',
+        heroCtaLink: '{f:uri.page(pageUid: 42)}'
+    }" />
+
+    <!-- Beliebte Freibaeder — Kachel-Grid -->
+    <section class="popular-pools" aria-labelledby="popular-pools-heading">
+        <div class="container">
+            <h2 id="popular-pools-heading">Die 3 beliebtesten Freibaeder</h2>
+
+            <div class="card-grid">
+                <f:for each="{popularPools}" as="pool">
+                    <f:render partial="Card/FreibadCard" arguments="{
+                        name: pool.name,
+                        image: pool.image,
+                        openingHours: pool.openingHours,
+                        detailLink: pool.detailLink,
+                        address: pool.address
+                    }" />
+                </f:for>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aktuelle Meldungen -->
+    <section class="news-teaser" aria-labelledby="news-heading">
+        <div class="container">
+            <h2 id="news-heading">Aktuelle Meldungen</h2>
+
+            <div class="news-grid">
+                <f:for each="{latestNews}" as="news" iteration="iterator">
+                    <f:if condition="{iterator.index} < 3">
+                        <article class="news-card">
+                            <time datetime="{f:format.date(date: news.date, format: 'Y-m-d')}">
+                                <f:format.date date="{news.date}" format="d.m.Y" />
+                            </time>
+                            <h3>
+                                <f:link.page pageUid="{news.detailPage}">
+                                    {news.title}
+                                </f:link.page>
+                            </h3>
+                            <p>{news.teaser}</p>
+                        </article>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regulaerer Content aus dem Backend -->
+    <section class="page-content">
+        <div class="container">
+            <f:format.raw>{content}</f:format.raw>
+        </div>
+    </section>
+
+</f:section>
+
+</html>
