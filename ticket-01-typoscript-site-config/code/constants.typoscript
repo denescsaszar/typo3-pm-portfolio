@@ -1,0 +1,29 @@
+# ==============================================
+# Constants — Berliner Kulturverein e.V.
+# ==============================================
+
+# Navigation
+navigation {
+    # UID der Footer-Seite (Elternseite fuer Impressum, Datenschutz etc.)
+    footerParentId = 42
+
+    # Maximale Tiefe der Hauptnavigation
+    maxDepth = 2
+
+    # Breadcrumb auf allen Seiten anzeigen (1 = ja, 0 = nein)
+    showBreadcrumb = 1
+}
+
+# Site-Informationen
+site {
+    name = Berliner Kulturverein e.V.
+    rootPageId = 1
+    defaultLanguage = de
+}
+
+# Pfade
+paths {
+    templates = EXT:site_kulturverein/Resources/Private/Templates/
+    partials = EXT:site_kulturverein/Resources/Private/Partials/
+    layouts = EXT:site_kulturverein/Resources/Private/Layouts/
+}

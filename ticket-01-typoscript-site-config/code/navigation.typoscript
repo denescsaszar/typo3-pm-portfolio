@@ -1,0 +1,89 @@
+# ==============================================
+# Navigation Configuration
+# Berliner Kulturverein e.V.
+# ==============================================
+
+# --- Hauptnavigation (Mega-Menu, 2 Ebenen) ---
+lib.mainNavigation = HMENU
+lib.mainNavigation {
+    1 = TMENU
+    1 {
+        # Nur Seiten mit doktype=1 (Standard) anzeigen
+        expAll = 1
+
+        NO {
+            wrapItemAndSub = <li class="nav-item">|</li>
+            ATagParams = class="nav-link"
+        }
+
+        ACT = 1
+        ACT {
+            wrapItemAndSub = <li class="nav-item active">|</li>
+            ATagParams = class="nav-link active"
+        }
+
+        CUR = 1
+        CUR {
+            wrapItemAndSub = <li class="nav-item current">|</li>
+            ATagParams = class="nav-link current"
+        }
+    }
+
+    # Zweite Ebene — Mega-Menu Unterpunkte
+    2 = TMENU
+    2 {
+        wrap = <ul class="mega-menu-dropdown">|</ul>
+
+        NO {
+            wrapItemAndSub = <li class="mega-menu-item">|</li>
+            ATagParams = class="mega-menu-link"
+        }
+
+        ACT = 1
+        ACT {
+            wrapItemAndSub = <li class="mega-menu-item active">|</li>
+            ATagParams = class="mega-menu-link active"
+        }
+    }
+}
+
+# --- Breadcrumb-Navigation ---
+lib.breadcrumb = HMENU
+lib.breadcrumb {
+    special = rootline
+    special.range = 0|-1
+
+    1 = TMENU
+    1 {
+        NO {
+            wrapItemAndSub = <li class="breadcrumb-item">|</li>
+            ATagParams = class="breadcrumb-link"
+        }
+
+        CUR = 1
+        CUR {
+            wrapItemAndSub = <li class="breadcrumb-item active" aria-current="page">|</li>
+            doNotLinkIt = 1
+        }
+    }
+
+    wrap = <nav aria-label="Breadcrumb"><ol class="breadcrumb">|</ol></nav>
+}
+
+# --- Footer-Navigation ---
+lib.footerNavigation = HMENU
+lib.footerNavigation {
+    # Spezielle Footer-Seiten (Ordner-ID aus Constants)
+    special = directory
+    special.value = {.footerParentId}
+
+    1 = TMENU
+    1 {
+        NO {
+            wrapItemAndSub = <li class="footer-nav-item">|</li>
+            ATagParams = class="footer-nav-link"
+        }
+    }
+
+    wrap = <ul class="footer-navigation">|</ul>
+}
