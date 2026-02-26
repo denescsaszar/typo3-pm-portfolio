@@ -1,0 +1,78 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <article class="event-detail" itemscope itemtype="https://schema.org/Event">
+
+        <!-- Zurueck-Link -->
+        <nav class="event-detail__back" aria-label="Zurueck zur Liste">
+            <f:link.action action="list" class="back-link">
+                &#8592; Alle Veranstaltungen
+            </f:link.action>
+        </nav>
+
+        <!-- Kategorie-Badge -->
+        <span class="event-detail__category badge badge--{event.category}">
+            {event.categoryLabel}
+        </span>
+
+        <!-- Titel -->
+        <h1 class="event-detail__title" itemprop="name">{event.title}</h1>
+
+        <!-- Meta-Infos -->
+        <div class="event-detail__meta">
+            <div class="meta-item">
+                <span class="meta-item__icon" aria-hidden="true">&#128197;</span>
+                <time datetime="{f:format.date(date: event.eventDate, format: 'Y-m-d\TH:i')}"
+                      itemprop="startDate">
+                    <f:format.date date="{event.eventDate}" format="d.m.Y, H:i" /> Uhr
+                </time>
+            </div>
+
+            <f:if condition="{event.location}">
+                <div class="meta-item" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                    <span class="meta-item__icon" aria-hidden="true">&#128205;</span>
+                    <span itemprop="name">{event.location}</span>
+                    <f:if condition="{event.address}">
+                        <span itemprop="address">, {event.address}</span>
+                    </f:if>
+                </div>
+            </f:if>
+
+            <f:if condition="{event.maxParticipants}">
+                <div class="meta-item">
+                    <span class="meta-item__icon" aria-hidden="true">&#128101;</span>
+                    Max. {event.maxParticipants} Teilnehmer
+                </div>
+            </f:if>
+        </div>
+
+        <!-- Beschreibung -->
+        <div class="event-detail__description" itemprop="description">
+            <f:format.html>{event.description}</f:format.html>
+        </div>
+
+        <!-- Anmeldung -->
+        <f:if condition="{event.registrationRequired}">
+            <div class="event-detail__registration">
+                <h2>Anmeldung</h2>
+                <p>Fuer diese Veranstaltung ist eine Anmeldung erforderlich.</p>
+                <f:if condition="{event.registrationLink}">
+                    <a href="{event.registrationLink}"
+                       class="btn btn--primary"
+                       role="button">
+                        Jetzt anmelden
+                        <span class="sr-only"> fuer {event.title}</span>
+                    </a>
+                </f:if>
+            </div>
+        </f:if>
+
+    </article>
+
+</f:section>
+
+</html>
